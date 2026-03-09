@@ -1,0 +1,5 @@
+includes:
+    - ./vendor/justbetter/magento2-coding-standard/phpstan.neon
+
+parameters:
+    level: 1

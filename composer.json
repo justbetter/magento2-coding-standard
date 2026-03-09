@@ -1,0 +1,19 @@
+{
+    "name": "justbetter/magento2-coding-standard",
+    "description": "This package contains the coding standards configurations used for our packages and projects",
+    "type": "package",
+    "license": "MIT",
+    "require": {
+        "magento/magento-coding-standard": ">=38"
+    },
+    "suggest": {
+        "ergebnis/composer-normalize": "Ensure composer.json files are properly sorted",
+        "bitexpert/phpstan-magento": "PHPStan with support layers for Magento"
+    },
+    "authors": [
+        {
+            "name": "indy koning",
+            "email": "indy@justbetter.nl"
+        }
+    ]
+}

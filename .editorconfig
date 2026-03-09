@@ -1,0 +1,35 @@
+# https://github.com/editorconfig/editorconfig/wiki/EditorConfig-Properties
+root = true
+
+[*]
+charset = utf-8
+indent_style = space
+indent_size = 4
+end_of_line = lf
+trim_trailing_whitespace = true
+insert_final_newline = true
+max_line_length = off
+
+quote_type = single
+spaces_around_operators = true
+spaces_around_brackets = none
+
+# https://en.wikipedia.org/wiki/Indent_style
+indent_brace_style = Allman
+
+[*.md]
+trim_trailing_whitespace = false
+
+[*.patch]
+trim_trailing_whitespace = false
+insert_final_newline = false
+
+[*.{yml,yaml}]
+indent_style = space
+indent_size = 2
+
+[*.{blade.php,html}]
+max_line_length = 400
+
+[*.{js,vue}]
+max_line_length = 140
