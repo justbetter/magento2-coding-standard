@@ -2,13 +2,12 @@ includes:
 	- ../../../vendor/bitexpert/phpstan-magento/extension.neon
 
 parameters:
-    paths:
-        - ../../../app/code
     ignoreErrors:
         -
             message: "/Parameter #1 \\(array\\|string\\) of echo cannot be converted to string/"
             identifier: echo.nonString
             path: ../../../app/**/*.phtml # escapeHtml claims to return an array via docblocks
+            reportUnmatched: false
     level: 1
     editorUrlTitle: '%%relFile%%:%%line%%'
     editorUrl: '%%relFile%%:%%line%%'

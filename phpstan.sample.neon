@@ -2,4 +2,6 @@ includes:
     - ./vendor/justbetter/magento2-coding-standard/phpstan.neon
 
 parameters:
+    paths:
+        - app/code
     level: 1
