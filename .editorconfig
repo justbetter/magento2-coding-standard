@@ -24,11 +24,17 @@ trim_trailing_whitespace = false
 trim_trailing_whitespace = false
 insert_final_newline = false
 
-[*.{yml,yaml}]
-indent_style = space
+[*.{yml,yaml,json}]
 indent_size = 2
 
-[*.{blade.php,html}]
+[{composer,auth}.json]
+indent_size = 4
+
+[db_schema_whitelist.json]
+indent_size = 4
+trim_trailing_whitespace = false
+
+[*.{phtml,html}]
 max_line_length = 400
 
 [*.{js,vue}]
