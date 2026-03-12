@@ -1,6 +1,7 @@
 Made return type conditional for escapeHtml
 
 @package magento/framework
+@version <103.0.9
 
 --- /Escaper.php
 +++ /Escaper.php
@@ -9,7 +10,7 @@ Made return type conditional for escapeHtml
       * @param string|array $data
       * @param array|null $allowedTags
 -     * @return string|array
-+     * @return ($data is array ? array : string)
++     * @return ($data is array ? string[] : string)
       */
      public function escapeHtml($data, $allowedTags = null)
      {
