@@ -90,8 +90,12 @@ $rectorConfigUniq
     ]);
 
 $apiInterfacePaths = [
-    ...glob(__DIR__ . '/app/code/*/*/Api/**/*Interface.php'),
-    ...glob(__DIR__ . '/app/code/*/*/Api/*Interface.php'),
+    ...glob(__DIR__ . '/../../../app/code/*/*/Api/**/*Interface.php'),
+    ...glob(__DIR__ . '/../../../app/code/*/*/Api/*Interface.php'),
+    ...glob(__DIR__ . '/../../../Api/**/*Interface.php'),
+    ...glob(__DIR__ . '/../../../Api/*Interface.php'),
+    ...glob(__DIR__ . '/../../../src/Api/**/*Interface.php'),
+    ...glob(__DIR__ . '/../../../src/Api/*Interface.php'),
 ];
 
 if ($apiInterfacePaths !== false) {
