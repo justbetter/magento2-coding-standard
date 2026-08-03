@@ -89,4 +89,17 @@ $rectorConfigUniq
         RemoveNullTagValueNodeRector::class, // Prevent removing @param docblocks, even if its the same type
     ]);
 
+$apiInterfacePaths = [
+    ...glob(__DIR__ . '/app/code/*/*/Api/**/*Interface.php'),
+    ...glob(__DIR__ . '/app/code/*/*/Api/*Interface.php'),
+];
+
+if ($apiInterfacePaths !== false) {
+    // We must not remove any @return docblocks from API interfaces.
+    $rectorConfig->withSkip([
+        RemoveUselessUnionReturnDocblockRector::class => $apiInterfacePaths,
+        RemoveDuplicatedReturnSelfDocblockRector::class => $apiInterfacePaths,
+    ]);
+}
+
 return $rectorConfigUniq;
