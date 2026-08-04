@@ -100,7 +100,7 @@ $apiInterfacePaths = [
 
 if ($apiInterfacePaths !== false) {
     // We must not remove any @return docblocks from API interfaces.
-    $rectorConfig->withSkip([
+    rectorConfigUniq->withSkip([
         RemoveUselessUnionReturnDocblockRector::class => $apiInterfacePaths,
         RemoveDuplicatedReturnSelfDocblockRector::class => $apiInterfacePaths,
     ]);
