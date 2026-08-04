@@ -8,10 +8,12 @@ use Rector\CodeQuality\Rector\Class_\InlineConstructorDefaultToPropertyRector;
 use Rector\CodingStyle\Rector\ClassConst\RemoveFinalFromConstRector;
 use Rector\Config\RectorConfig;
 use Rector\Configuration\RectorConfigBuilder;
+use Rector\DeadCode\Rector\ClassMethod\RemoveDuplicatedReturnSelfDocblockRector;
 use Rector\DeadCode\Rector\ClassMethod\RemoveEmptyClassMethodRector;
 use Rector\DeadCode\Rector\ClassMethod\RemoveNullTagValueNodeRector;
 use Rector\DeadCode\Rector\ClassMethod\RemoveUselessParamTagRector;
 use Rector\DeadCode\Rector\ClassMethod\RemoveUselessReturnTagRector;
+use Rector\DeadCode\Rector\ClassMethod\RemoveUselessUnionReturnDocblockRector;
 use Rector\DeadCode\Rector\Node\RemoveNonExistingVarAnnotationRector;
 use Rector\DeadCode\Rector\Property\RemoveUselessReadOnlyTagRector;
 use Rector\Php80\Rector\Class_\ClassPropertyAssignToConstructorPromotionRector;
@@ -85,25 +87,10 @@ $rectorConfigUniq
         ReplaceNewDateTimeNull::class, // Broken magento added rule (https://github.com/magento/magento-coding-standard/issues/392)
         // Mostly aimed at preventing issues for API interfaces
         RemoveUselessReturnTagRector::class, // Prevent removing @return docblocks, even if its the same type
+        RemoveUselessUnionReturnDocblockRector::class, // Prevent removing @return docblocks, even if its the same type
+        RemoveDuplicatedReturnSelfDocblockRector::class, // Prevent removing @return docblocks, even if its the same type
         RemoveUselessParamTagRector::class, // Prevent removing @param docblocks, even if its the same type
         RemoveNullTagValueNodeRector::class, // Prevent removing @param docblocks, even if its the same type
     ]);
-
-$apiInterfacePaths = [
-    ...glob(__DIR__ . '/../../../app/code/*/*/Api/**/*Interface.php'),
-    ...glob(__DIR__ . '/../../../app/code/*/*/Api/*Interface.php'),
-    ...glob(__DIR__ . '/../../../Api/**/*Interface.php'),
-    ...glob(__DIR__ . '/../../../Api/*Interface.php'),
-    ...glob(__DIR__ . '/../../../src/Api/**/*Interface.php'),
-    ...glob(__DIR__ . '/../../../src/Api/*Interface.php'),
-];
-
-if ($apiInterfacePaths !== false) {
-    // We must not remove any @return docblocks from API interfaces.
-    rectorConfigUniq->withSkip([
-        RemoveUselessUnionReturnDocblockRector::class => $apiInterfacePaths,
-        RemoveDuplicatedReturnSelfDocblockRector::class => $apiInterfacePaths,
-    ]);
-}
 
 return $rectorConfigUniq;
